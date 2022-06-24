@@ -26,7 +26,7 @@ for file in glob.glob('*.pdf'): # compile twice
     print(file)
 
     basename = file[:-4]
-    os.system(f'magick -define colorspace:auto-grayscale=false {file} Pictures/{basename}.png')
+    os.system(f'magick -define colorspace:auto-grayscale=false {file} -background white -alpha remove -alpha off Pictures/{basename}.png')
 
 
 with open('README.md','w') as output:
