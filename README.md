@@ -1,1 +1,1 @@
-![basis](Pics/basis.png)
+![basis](Pictures/basis.png)
