@@ -32,5 +32,14 @@ for file in glob.glob('*.pdf'): # compile twice
 with open('README.md','w') as output:
     for pdf in glob.glob('*.pdf'):
         basename = pdf[:-4]
+        output.write(f'{basename}\r\n')
+        
+        output.write('```latex\r\n')
+
+        with open(f'{basename}.tex') as code:
+            output.write(code.read())
+
+        output.write('\r\n```\r\n')
+        
         output.write(f'![{basename}](Pictures/{basename}.png)')
         output.write('\r\n')
