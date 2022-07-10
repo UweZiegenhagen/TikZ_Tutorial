@@ -10,6 +10,7 @@ The basis for our course is the following TikZ picture, that draws a blue grid f
 \draw[step=1cm,blue,thin] (0,0) grid (15,10);
 \end{tikzpicture}
 \end{document}
+ 
 ```
 ![000-basis](Pictures/000-basis.png)
 # 001-simple_lines

@@ -12,7 +12,8 @@ os.chdir('./Codes')
 files = glob.glob('*.tex')
 
 for file in files: # compile twice
-    print(file)    
+    print(f'Running lualatex on {file} twice')
+
     os.system(f'lualatex -interaction=batchmode {file}')
     os.system(f'lualatex -interaction=batchmode {file}')
 
