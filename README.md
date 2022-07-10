@@ -1,4 +1,7 @@
 # 000-basis
+
+The basis for our course is the following TikZ picture, that draws a blue grid from (0,0) in the left bottom corner to (15,10) the top right corner.
+
 ```latex
 \documentclass[tikz,border=0.5cm]{standalone}
 
