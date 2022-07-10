@@ -1,0 +1,1 @@
+One can also specify more than two coordinates for a line, as the following example shows.

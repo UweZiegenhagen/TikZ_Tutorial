@@ -11,7 +11,7 @@
 ![000-basis](Pictures/000-basis.png)
 # 001-simple_lines
 
-Using the \draw command TikZ can draw a line from one coordinate to another. The width of the line can be specified explicitly, however TikZ provides a few default values as well.
+Using the `\draw` command TikZ can draw a line from one coordinate to another. The width of the line can be specified explicitly, however TikZ provides a few default values as well.
 
 ```latex
 \documentclass[tikz,border=0.5cm]{standalone}
@@ -33,3 +33,20 @@ Using the \draw command TikZ can draw a line from one coordinate to another. The
 \end{document}
 ```
 ![001-simple_lines](Pictures/001-simple_lines.png)
+# 002-simple_lines
+
+One can also specify more than two coordinates for a line, as the following example shows.
+
+```latex
+\documentclass[tikz,border=0.5cm]{standalone}
+
+\begin{document}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (15,10);
+
+\draw (1,1) -- (2,2) -- (3,1) -- (7,6);
+
+\end{tikzpicture}
+\end{document}
+```
+![002-simple_lines](Pictures/002-simple_lines.png)
