@@ -1,0 +1,1 @@
+A path can be closed automatically when instead of the first coordinate again the option `-- cycle` is set.

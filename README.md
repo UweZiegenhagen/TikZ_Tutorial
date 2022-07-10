@@ -54,3 +54,45 @@ One can also specify more than two coordinates for a line, as the following exam
 \end{document}
 ```
 ![002-simple_lines](Pictures/002-simple_lines.png)
+# 003-close-path
+
+A path can be closed automatically when instead of the first coordinate again the option `-- cycle` is set.
+
+```latex
+\documentclass[tikz,border=0.5cm]{standalone}
+
+\begin{document}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (15,10);
+
+\draw (1,1) -- (3,7) -- (8,3) -- cycle;
+
+\end{tikzpicture}
+\end{document}
+```
+![003-close-path](Pictures/003-close-path.png)
+# 004-line-styles
+
+Besides solid lines TikZ supports also `dashed` and `dotted` lines. Each of them is also available in a `loosely` and `densely` version.
+
+It is also possible to define more sophisticated `patterns`.
+
+```latex
+\documentclass[tikz,border=0.5cm]{standalone}
+
+\begin{document}
+\begin{tikzpicture}
+\draw[step=1cm,blue,very thin] (0,0) grid (15,10);
+
+\draw [dashed] (1,1) -- (6,3);
+\draw [loosely dashed] (1,1.5) -- (6,3.5);
+\draw [densely dashed] (1,2) -- (6,4);
+
+\draw [dotted] (1,3) -- (6,5);
+\draw [loosely dotted] (1,3.5) -- (6,5.5);
+\draw [densely dotted] (1,4) -- (6,6);
+
+\end{tikzpicture}
+\end{document}
+```
+![004-line-styles](Pictures/004-line-styles.png)
