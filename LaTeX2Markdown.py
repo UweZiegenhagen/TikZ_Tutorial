@@ -37,6 +37,12 @@ with open('../README.md','w') as output:
     for pdf in glob.glob('*.pdf'):
         basename = pdf[:-4]
         output.write(f'# {basename}\r\n')
+
+        if os.path.exists(f'../Annotations/{basename}.md'):
+            with open(f'../Annotations/{basename}.md', "r") as f:
+                annotation = f.read()
+                output.write(f'\n{annotation}\n\n')                
+        
         
         output.write('```latex\n')
 

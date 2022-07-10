@@ -1,0 +1,1 @@
+Using the \draw command TikZ can draw a line from one coordinate to another. The width of the line can be specified explicitly, however TikZ provides a few default values as well.
