@@ -7,7 +7,11 @@
 import os
 import glob
 
+os.chdir('./Codes') 
+
 files = glob.glob('*.tex')
+
+
 
 for file in files: # compile twice
     print(file)    
@@ -26,10 +30,10 @@ for file in glob.glob('*.pdf'): # compile twice
     print(file)
 
     basename = file[:-4]
-    os.system(f'magick -define colorspace:auto-grayscale=false {file} -background white -alpha remove -alpha off Pictures/{basename}.png')
+    os.system(f'magick -define colorspace:auto-grayscale=false {file} -background white -alpha remove -alpha off ../Pictures/{basename}.png')
 
 
-with open('README.md','w') as output:
+with open('../README.md','w') as output:
     for pdf in glob.glob('*.pdf'):
         basename = pdf[:-4]
         output.write(f'# {basename}\r\n')
