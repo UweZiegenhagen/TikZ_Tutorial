@@ -35,7 +35,8 @@ for file in glob.glob('*.pdf'): # compile twice
 with open('../README.md','w') as output:
     for pdf in glob.glob('*.pdf'):
         basename = pdf[:-4]
-        output.write(f'# {basename}\r\n')
+        title = basename.replace('-',' ')
+        output.write(f'# {title}\r\n')
 
         if os.path.exists(f'../Annotations/{basename}.md'):
             with open(f'../Annotations/{basename}.md', "r") as f:
