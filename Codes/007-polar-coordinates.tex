@@ -1,0 +1,13 @@
+%!TEX TS-program = LuaLaTeX
+\documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
+
+\begin{document}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (15,10);
+\draw[red,thick] (5,5) -- ++(90:1) -- ++(45:1) -- ++(0:3) ;
+
+\end{tikzpicture}
+\end{document}
+ 
