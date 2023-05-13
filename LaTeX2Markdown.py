@@ -2,6 +2,11 @@
 """
 @author: Uwe Ziegenhagen
 
+- Converts a set of LaTeX-files using lua scripts
+  and converts the resulting pdf to PNG
+- Deletes the auxiliary files
+- adds links to the PNGs into the README.MD
+
 """
 
 import os
@@ -29,6 +34,7 @@ for file in glob.glob('*.pdf'): # compile twice
     print(file)
 
     basename = file[:-4]
+    print(f'Calling imagemagick on {basename}')
     os.system(f'magick -define colorspace:auto-grayscale=false {file} -background white -alpha remove -alpha off ../Pictures/{basename}.png')
 
 

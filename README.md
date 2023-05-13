@@ -3,7 +3,10 @@
 The basis for our course is the following TikZ picture, that draws a blue grid from (0,0) in the left bottom corner to (15,10) the top right corner.
 
 ```latex
+%!TEX TS-program = LuaLaTeX
 \documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
 
 \begin{document}
 \begin{tikzpicture}
@@ -18,7 +21,10 @@ The basis for our course is the following TikZ picture, that draws a blue grid f
 Using the `\draw` command TikZ can draw a line from one coordinate to another. The width of the line can be specified explicitly, however TikZ provides a few default values as well.
 
 ```latex
+%!TEX TS-program = LuaLaTeX
 \documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
 
 \begin{document}
 \begin{tikzpicture}
@@ -42,7 +48,10 @@ Using the `\draw` command TikZ can draw a line from one coordinate to another. T
 One can also specify more than two coordinates for a line, as the following example shows.
 
 ```latex
+%!TEX TS-program = LuaLaTeX
 \documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
 
 \begin{document}
 \begin{tikzpicture}
@@ -59,7 +68,10 @@ One can also specify more than two coordinates for a line, as the following exam
 A path can be closed automatically when instead of the first coordinate again the option `-- cycle` is set.
 
 ```latex
+%!TEX TS-program = LuaLaTeX
 \documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
 
 \begin{document}
 \begin{tikzpicture}
@@ -78,7 +90,10 @@ Besides solid lines TikZ supports also `dashed` and `dotted` lines. Each of them
 It is also possible to define more sophisticated `patterns`.
 
 ```latex
+%!TEX TS-program = LuaLaTeX
 \documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
 
 \begin{document}
 \begin{tikzpicture}
@@ -103,7 +118,10 @@ You can also use relative coordinates by adding one or two plus signs before the
 The version with two plus signs updates the coordinate from which the relative steps are taken, so based on some point we say "move x units horizontally and y units vertically", the next relative coordinate uses the newly created coordinate to determine the next step.
 
 ```latex
+%!TEX TS-program = LuaLaTeX
 \documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
 
 \begin{document}
 \begin{tikzpicture}
@@ -124,7 +142,10 @@ Let us compare it with the two-plus-version. The two-plus version in the followi
 The one-plus-version uses the point (8.5,5.5) as _reference base_ for *all* following one-plus-coordinates. We start from (8.5,5.5) one unit to the right and one unit up, the next coordinate is one unit to the left and one unit up from the original point (8.5,5.5).
 
 ```latex
+%!TEX TS-program = LuaLaTeX
 \documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
 
 \begin{document}
 \begin{tikzpicture}
@@ -138,3 +159,20 @@ The one-plus-version uses the point (8.5,5.5) as _reference base_ for *all* foll
  
 ```
 ![006-relative-coordinates-no-updates](Pictures/006-relative-coordinates-no-updates.png)
+# 007 polar coordinates
+```latex
+%!TEX TS-program = LuaLaTeX
+\documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
+
+\begin{document}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (15,10);
+\draw[red,thick] (5,5) -- ++(90:1) -- ++(45:1) -- ++(0:3) ;
+
+\end{tikzpicture}
+\end{document}
+ 
+```
+![007-polar-coordinates](Pictures/007-polar-coordinates.png)
