@@ -10,6 +10,7 @@ The basis for our course is the following TikZ picture, that draws a blue grid f
 
 \begin{document}
 \begin{tikzpicture}
+\draw (0,0) -- (1,1)--(2,0);
 \draw[step=1cm,blue,thin] (0,0) grid (15,10);
 \end{tikzpicture}
 \end{document}
@@ -176,3 +177,21 @@ The one-plus-version uses the point (8.5,5.5) as _reference base_ for *all* foll
  
 ```
 ![007-polar-coordinates](Pictures/007-polar-coordinates.png)
+# 008 Nodes_Coordinates
+```latex
+%!TEX TS-program = LuaLaTeX
+\documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
+
+\begin{document}
+\begin{tikzpicture}
+\draw[step=1cm,lightgray,thin] (0,0) grid (15,10);
+\node (a) at (1,1){A};
+\coordinate (b) at (3,3);
+\draw[->] (a) -- (b);
+\end{tikzpicture}
+\end{document}
+ 
+```
+![008-Nodes_Coordinates](Pictures/008-Nodes_Coordinates.png)
