@@ -274,3 +274,70 @@ spy using outlines={circle, magnification=4, size=3cm, connect spies}
 % rest via shapes library
 ```
 ![010-Node_Formatting](Pictures/010-Node_Formatting.png)
+# 011 Node Anchors
+```latex
+%!TEX TS-program = LuaLaTeX
+\documentclass[tikz,border=0.5cm]{standalone}
+\usetikzlibrary{positioning}
+
+\tikzset{punkt/.style = {
+    shape=circle, fill = blue, minimum size = 0.25cm
+}}
+
+\tikzset{rechteck/.style = {
+        shape  = rectangle, draw   = black,minimum height = 10cm,
+        minimum width  = 14cm
+}}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm]
+  \node (r) at (0,0) [rechteck] {};
+  \node[label=r.center] at (r.center) [punkt] {};
+  \node[label=r.north] at (r.north) [punkt] {};
+  \node[label=r.south] at (r.south) [punkt] {};
+  \node[label=r.east] at (r.east) [punkt] {};
+  \node[label=r.west] at (r.west) [punkt] {};
+  \node[label=r.north east] at (r.north east) [punkt] {};
+  \node[label=r.north west] at (r.north west) [punkt] {};
+  \node[label=r.south east] at (r.south east) [punkt] {};
+  \node[label=r.south west] at (r.south west) [punkt] {};
+
+\path (r.south west) -- (r.north) coordinate[pos=0.25] (r-sw-n-viertel);  
+\node[label=r-sw-n-viertel] at (r-sw-n-viertel) [punkt] {}; 
+  
+\path (r.south west) -- (r.north) coordinate[pos=0.5] (r-sw-n-mitte);  
+\node[label=r-sw-n-mitte] at (r-sw-n-mitte) [punkt] {}; 
+
+\path (r.south west) -- (r.north) coordinate[pos=0.75] (r-sw-n-dreiviertel);  
+\node[label=r-sw-n-dreiviertel] at (r-sw-n-dreiviertel) [punkt] {}; 
+
+  
+\end{tikzpicture}
+\end{document} 
+```
+![011-Node-Anchors](Pictures/011-Node-Anchors.png)
+# 099 Coordinates
+
+Coordinates are like nodes with an empty label.
+
+```latex
+%!TEX TS-program = LuaLaTeX
+\documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
+
+\begin{document}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (15,10);
+
+\coordinate (a) at (0,0);
+\coordinate (b) at (5,4);
+\coordinate (c) at (6,2);
+
+\draw (a) -- (b)--(c);
+
+\end{tikzpicture}
+\end{document}
+ 
+```
+![099-Coordinates](Pictures/099-Coordinates.png)
