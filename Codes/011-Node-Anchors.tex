@@ -2,7 +2,7 @@
 
 %https://tex.stackexchange.com/questions/482057/extending-anchors-in-tikz
 \documentclass[tikz,border=0.5cm]{standalone}
-\usetikzlibrary{positioning}
+\usetikzlibrary{positioning,calc}
 
 \tikzset{punkt/.style = {
     shape=circle, fill = blue, minimum size = 0.25cm
@@ -35,6 +35,8 @@
 \path (r.south west) -- (r.north) coordinate[pos=0.75] (r-sw-n-dreiviertel);  
 \node[label=r-sw-n-dreiviertel] at (r-sw-n-dreiviertel) [punkt] {}; 
 
+\node[label=r-n-se-viertel] at ($(r.south east)!.25!(r.north)$) [punkt] {};
+ 
   
 \end{tikzpicture}
 \end{document} 
