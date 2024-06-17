@@ -320,6 +320,70 @@ spy using outlines={circle, magnification=4, size=3cm, connect spies}
 \end{document} 
 ```
 ![011-Node-Anchors](Pictures/011-Node-Anchors.png)
+# 095 matrix
+```latex
+%!TEX TS-program = LuaLaTeX
+\documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
+
+\begin{document}
+ % without matrix library
+\begin{tikzpicture}
+\node[matrix,draw]{
+\node(a){A}; & \node(b){B}; & \node(c){C}; \\
+\node(d){D}; & \node(e){E}; & \node(f){F}; \\
+};
+\end{tikzpicture}
+\end{document}
+ 
+
+ 
+```
+![095-matrix](Pictures/095-matrix.png)
+# 096 matrix
+```latex
+%!TEX TS-program = LuaLaTeX
+\documentclass[tikz,border=0.5cm]{standalone}
+\usetikzlibrary{matrix}
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
+
+\begin{document}
+% with matrix library
+\begin{tikzpicture}
+\matrix[matrix of nodes,draw]{
+A & B & C \\
+D & E & F\\
+};
+\end{tikzpicture}
+\end{document}
+```
+![096-matrix](Pictures/096-matrix.png)
+# 097 trees
+```latex
+%!TEX TS-program = LuaLaTeX
+\documentclass[tikz,border=0.5cm]{standalone}
+
+\pdfvariable suppressoptionalinfo \numexpr32+64+512\relax
+
+\begin{document}
+\begin{tikzpicture}
+
+\node{\LaTeX} 
+child { node {pdf\LaTeX}
+	child { node {1} } 
+	child { node {2} }	
+	child { node {3} }
+}
+child {node {xe\LaTeX} }
+child {node {lua\LaTeX} }
+;
+
+\end{tikzpicture}
+\end{document}
+ 
+```
+![097-trees](Pictures/097-trees.png)
 # 098 Example
 ```latex
 %!TEX TS-program = LuaLaTeX
