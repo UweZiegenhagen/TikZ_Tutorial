@@ -38,7 +38,8 @@
     backgroundcolor=\color{colBack}, %
     breakautoindent=true, %
     captionpos=b,
-    language={[LaTeX]TeX}
+    language={[LaTeX]TeX},
+    morekeywords={draw,node}
 }
  
 
@@ -93,23 +94,9 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[containsverbatim]
-\frametitle{Grundlagen I}
-
-\begin{lstlisting}
-\begin{tikzpicture}
-\draw[very thick] (1,1) -- (4,4) -- (6,2);
-\draw[step=1cm,blue,thin] (0,0) grid (10,7);
-\end{tikzpicture}
-\end{lstlisting}
-
-
-\end{frame}
-
-
 
 \begin{frame}[containsverbatim]
-\frametitle{Grundlagen I}
+\frametitle{Einfache Linien}
 
 \begin{lstlisting}
 \begin{tikzpicture}
@@ -129,39 +116,61 @@
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Grundlagen I}
+\begin{frame}[containsverbatim]
+\frametitle{Liniendicken}
+
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw[ultra thin] (2,1) -- (2,3);
+\draw[very thin] (2.5,1) -- (2.5,3);
+\draw[thin] (3,1) -- (3,3);
+\draw[semithick] (3.5,1) -- (3.5,3);
+\draw[thick] (4,1) -- (4,3);
+\draw[very thick] (4.5,1) -- (4.5,3);
+\draw[ultra thick] (5,1) -- (5,3);
+\draw[line width=4pt] (5.5,1) -- (5.5,3);
+\end{tikzpicture}
+\end{lstlisting}
 
 \begin{center}
 \begin{tikzpicture}
-\draw[step=1cm,blue,thin] (0,0) grid (10,7);
-\draw[ultra thin] (1,1) -- (3,2);
-\draw[very thin] (1,1.5) -- (3,2.5);
-\draw[thin] (1,2) -- (3,3);
-\draw[semithick] (1,2.5) -- (3,3.5);
-\draw[thick] (1,3) -- (3,4);
-\draw[very thick] (1,3.5) -- (3,4.5);
-\draw[ultra thick] (1,4) -- (3,5);
-\draw[line width=4pt] (1,4.5) -- (3,5.5);
+\draw[ultra thin] (2,1) -- (2,3);
+\draw[very thin] (2.5,1) -- (2.5,3);
+\draw[thin] (3,1) -- (3,3);
+\draw[semithick] (3.5,1) -- (3.5,3);
+\draw[thick] (4,1) -- (4,3);
+\draw[very thick] (4.5,1) -- (4.5,3);
+\draw[ultra thick] (5,1) -- (5,3);
+\draw[line width=4pt] (5.5,1) -- (5.5,3);
 \end{tikzpicture}
 \end{center}
 
 
 \end{frame}
 
-\begin{frame}
-\frametitle{Grundlagen I}
+\begin{frame}[containsverbatim]
+\frametitle{Linienstile}
+
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw[thick, dashed] (2,1) -- (2,3);
+\draw[thick, loosely dashed] (2.5,1) -- (2.5,3);
+\draw[thick, densely dashed] (3,1) -- (3,3);
+\draw[thick, dotted] (3.5,1) -- (3.5,3);
+\draw[thick, loosely dotted] (4,1) -- (4,3);
+\draw[thick, densely dotted] (4.5,1) -- (4.5,3);
+\end{tikzpicture}
+\end{lstlisting}
+
 
 \begin{center}
 \begin{tikzpicture}
-\draw[step=1cm,blue,very thin] (0,0) grid (10,7);
-
-\draw [thick, dashed] (1,1) -- (6,3);
-\draw [thick, loosely dashed] (1,1.5) -- (6,3.5);
-\draw [thick, densely dashed] (1,2) -- (6,4);
-\draw [thick, dotted] (1,3) -- (6,5);
-\draw [thick, loosely dotted] (1,3.5) -- (6,5.5);
-\draw [thick, densely dotted] (1,4) -- (6,6);
+\draw[thick, dashed] (2,1) -- (2,3);
+\draw[thick, loosely dashed] (2.5,1) -- (2.5,3);
+\draw[thick, densely dashed] (3,1) -- (3,3);
+\draw[thick, dotted] (3.5,1) -- (3.5,3);
+\draw[thick, loosely dotted] (4,1) -- (4,3);
+\draw[thick, densely dotted] (4.5,1) -- (4.5,3);
 \end{tikzpicture}
 \end{center}
 
