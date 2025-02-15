@@ -9,6 +9,49 @@
 \usepackage{csquotes}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usepackage{listings}
+\usepackage{bera}
+ 
+\definecolor{colBack}{rgb}{1,1,0.8}
+\definecolor{hellgelb}{rgb}{1,1,0.8}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+ 
+\lstset{%
+    float=hbp,%
+    basicstyle=\ttfamily\footnotesize, %
+    identifierstyle=\color{colIdentifier}, %
+    keywordstyle=\color{colKeys}, %
+    stringstyle=\color{colString}, %
+    commentstyle=\color{colComments}, %
+    columns=flexible, %
+    tabsize=2, %
+    frame=single, %
+    extendedchars=true, %
+    showspaces=false, %
+    showstringspaces=false, %
+    numbers=left, %
+    numberstyle=\tiny, %
+    breaklines=true, %
+    backgroundcolor=\color{colBack}, %
+    breakautoindent=true, %
+    captionpos=b,
+    language={[LaTeX]TeX}
+}
+ 
+
+\lstset{literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {~}{{\textasciitilde}}1
+}
 
 \author{Uwe Ziegenhagen}
 \title{\textit{TikZ}ische Erlebnisse}
@@ -50,13 +93,35 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[containsverbatim]
 \frametitle{Grundlagen I}
+
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw[very thick] (1,1) -- (4,4) -- (6,2);
+\draw[step=1cm,blue,thin] (0,0) grid (10,7);
+\end{tikzpicture}
+\end{lstlisting}
+
+
+\end{frame}
+
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Grundlagen I}
+
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw[very thick] (1,1) -- (4,4) -- (6,2);
+\draw[step=1cm,blue,thin] (0,0) grid (10,5);
+\end{tikzpicture}
+\end{lstlisting}
 
 \begin{center}
 \begin{tikzpicture}
 \draw[very thick] (1,1) -- (4,4) -- (6,2);
-\draw[step=1cm,blue,thin] (0,0) grid (10,7);
+\draw[step=1cm,blue,thin] (0,0) grid (10,5);
 \end{tikzpicture}
 \end{center}
 
