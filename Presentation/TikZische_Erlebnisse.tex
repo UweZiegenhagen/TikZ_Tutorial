@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{csquotes}
 \usepackage{xcolor}
+\usepackage{tikz}
 
 \author{Uwe Ziegenhagen}
 \title{\textit{TikZ}ische Erlebnisse}
@@ -49,48 +50,107 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Grundlagen I}
+
+\begin{center}
+\begin{tikzpicture}
+\draw[very thick] (1,1) -- (4,4) -- (6,2);
+\draw[step=1cm,blue,thin] (0,0) grid (10,7);
+\end{tikzpicture}
+\end{center}
+
+
+\end{frame}
 
 
 \begin{frame}
 \frametitle{Grundlagen I}
 
-Linien von a nach b
-Bezier von c nach d via e und f
+\begin{center}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,7);
+\draw[ultra thin] (1,1) -- (3,2);
+\draw[very thin] (1,1.5) -- (3,2.5);
+\draw[thin] (1,2) -- (3,3);
+\draw[semithick] (1,2.5) -- (3,3.5);
+\draw[thick] (1,3) -- (3,4);
+\draw[very thick] (1,3.5) -- (3,4.5);
+\draw[ultra thick] (1,4) -- (3,5);
+\draw[line width=4pt] (1,4.5) -- (3,5.5);
+\end{tikzpicture}
+\end{center}
+
 
 \end{frame}
-
 
 \begin{frame}
 \frametitle{Grundlagen I}
 
-Linienstile und -dicken
+\begin{center}
+\begin{tikzpicture}
+\draw[step=1cm,blue,very thin] (0,0) grid (10,7);
+
+\draw [thick, dashed] (1,1) -- (6,3);
+\draw [thick, loosely dashed] (1,1.5) -- (6,3.5);
+\draw [thick, densely dashed] (1,2) -- (6,4);
+\draw [thick, dotted] (1,3) -- (6,5);
+\draw [thick, loosely dotted] (1,3.5) -- (6,5.5);
+\draw [thick, densely dotted] (1,4) -- (6,6);
+\end{tikzpicture}
+\end{center}
+
+
 \end{frame}
-
-
 
 
 
 \begin{frame}
-\frametitle{Grundlagen III}
+\frametitle{Grundlagen III mit Update des Ursprungs}
 
-Koordinaten
+\begin{center}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,7);
+
+\draw[thick, red] (1,1) -- ++(5,1) -- ++(-1,1) -- ++(3,3);
+\end{tikzpicture}
+\end{center}
 
 \end{frame}
 
 
+\begin{frame}
+\frametitle{Grundlagen III - Koordinaten ohne Update}
+
+\begin{center}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,7);
+\draw[thick, red] (3.5,3.5) -- ++(1,1) -- ++(-1,1);
+
+\draw[thick, red] (5.5,2.5) -- +(1,1) -- +(-1,1);
+
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Grundlagen IV -- Polarkoordinaten}
+
+\begin{center}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,7);
+\draw[red,thick] (3,3) -- ++(25:1) -- ++(65:1) -- ++(0:3) ;
+
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
 
 \begin{frame}
 \frametitle{Grundlagen IV}
 
-Relative Koordinaten
 
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Grundlagen IV}
-
-Polarkoordinaten
 
 \end{frame}
 
