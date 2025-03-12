@@ -40,7 +40,7 @@
     breakautoindent=true, %
     captionpos=b,
     language={[LaTeX]TeX},
-    morekeywords={draw,node,node,coordinate,grid}
+    morekeywords={draw,node,node,coordinate,grid,rounded,thick, corners,very,minimum,fill,width,height,rectangle,step,thin}
 }
  
 
@@ -294,7 +294,7 @@ ohne Update der Koordinaten
 
 
 \begin{frame}[containsverbatim]
-\frametitle{More Node Shapes}
+\frametitle{Mehr Node Shapes}
 
 \begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
 \begin{tikzpicture}
@@ -320,14 +320,30 @@ ohne Update der Koordinaten
 
 \end{frame}
 
+\begin{frame}[containsverbatim]
+\frametitle{Shapes formatieren}
 
-\begin{frame}
-\frametitle{Grundlagen II}
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,3);
 
-Shapes Formatieren
+\node[rectangle,draw = red,very thick,rounded corners=5pt,fill=green] (r) at (2.5,1){Runde Ecken};
+
+\node[rectangle,draw = red,very thick,rounded corners=5pt,minimum width=5cm, minimum height=15mm, fill=yellow] (r) at (7,2){Runde Ecken};
+\end{tikzpicture}
+\end{lstlisting}
+
+\begin{center}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,3);
+
+\node[rectangle,draw = red,very thick,rounded corners=5pt,fill=green] (r) at (2.5,1){Runde Ecken};
+
+\node[rectangle,draw = red,very thick,rounded corners=5pt,minimum width=5cm, minimum height=15mm, fill=yellow] (r) at (7,2){Runde Ecken};
+\end{tikzpicture}
+\end{center}
 
 \end{frame}
-
 
 
 \begin{frame}
