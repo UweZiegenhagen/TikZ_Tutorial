@@ -9,6 +9,7 @@
 \usepackage{csquotes}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usetikzlibrary{shapes}
 \usepackage{listings}
 \usepackage{bera}
  
@@ -71,7 +72,7 @@
 \frametitle{Inhalt}
 
 \begin{itemize}
-\item Kurze Vorstellung von TikZ-Grundlagen
+\item Kurze (nicht vollständige) Vorstellung \newline von TikZ-Grundlagen
 \item Beispiele, Beispiele, Beispiele\ldots 
 \end{itemize}
 
@@ -231,7 +232,7 @@ ohne Update der Koordinaten
 
 \begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
 \begin{tikzpicture}
-\draw[step=1cm,blue,thin] (0,0) grid (10,4);
+\draw[step=1cm,blue,thin] (0,0) grid (10,3);
 
 \coordinate (a) at (1,1);
 \coordinate (b) at (5,3);
@@ -259,21 +260,65 @@ ohne Update der Koordinaten
 
 \end{frame}
 
-\begin{frame}
-\frametitle{Grundlagen II}
 
-nodes
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Node Shapes}
+
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,3);
+
+\node[rectangle,draw = red] (r) at (1,1){r};
+\node[circle,draw = red] (c) at (3,1){c};
+\end{tikzpicture}
+\end{lstlisting}
+
+\begin{center}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,3);
+
+\node[rectangle,draw = red] (r) at (1,1){r};
+\node[circle,draw = red] (c) at (3,1){c};
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+	\item more with \verb|\usetikzlibrary{shapes}|
+\end{itemize}
 
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Grundlagen II}
 
-Shapes
+
+\begin{frame}[containsverbatim]
+\frametitle{More Node Shapes}
+
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,3);
+
+\node[ellipse,draw = red] (e) at (2,1){ellipse};
+\node[diamond,draw = red] (d) at (4,1){d};
+\node[regular polygon,regular polygon sides=5,draw=red](p) at (6,1){p};
+\node[star,star points=5,draw = red] (s) at (8,1){s};
+\end{tikzpicture}
+\end{lstlisting}
+
+\begin{center}
+\begin{tikzpicture}
+\draw[step=1cm,blue,thin] (0,0) grid (10,3);
+
+\node[ellipse,draw = red] (e) at (2,1){ellipse};
+\node[diamond,draw = red] (d) at (4,1){d};
+\node[regular polygon,regular polygon sides=5,draw=red](p) at (6,1){p};
+\node[star,star points=5,draw = red] (s) at (8,1){s};
+\end{tikzpicture}
+\end{center}
 
 \end{frame}
-
 
 
 \begin{frame}
