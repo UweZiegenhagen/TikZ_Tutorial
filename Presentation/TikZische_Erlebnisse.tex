@@ -1023,8 +1023,162 @@ align=center,node distance=0.5cm}]
 	\item  \texttt{0.25} steht also für ein Viertel des Weges 
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Synthesizer-Diagramm X}
+
+
+\begin{lstlisting}
+\node at (0,0) [box] (noise) {Noise};
+\node [box, below = of noise] (vco2) {VCO2};
+\coordinate (coordoffset) at ($(vco2.west)!0.5!(vco2.north west)$);
+\node at (coordoffset){\textcolor{red}{$\times$}};
+
+\node [left = of coordoffset](offset) {offset};
+\draw [thick,->] (offset) -- (coordoffset);
+\end{lstlisting}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2, transform shape,
+box/.style={rectangle,thick,draw=black,
+minimum width=20mm, minimum height=10mm,
+align=center,node distance=0.5cm}]
+
+\node at (0,0) [box] (noise) {Noise};
+\node [box, below = of noise] (vco2) {VCO2};
+\coordinate (coordoffset) at ($(vco2.west)!0.5!(vco2.north west)$);
+\node at (coordoffset){\textcolor{red}{$\times$}};
+\node [left = of coordoffset](offset) {offset};
+\draw [thick,->] (offset) -- (coordoffset);
+\end{tikzpicture}
+\end{center}
 
 \end{frame}
+
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Synthesizer-Diagramm XI}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5, transform shape,
+box/.style={rectangle,thick,draw=black,
+minimum width=20mm, minimum height=10mm,
+align=center,node distance=0.5cm}]
+
+\node at (0,0) [box] (noise) {Noise};
+\node [box, below = of noise] (vco2) {VCO2};
+\node [box, below = of vco2] (vco1) {VCO1};
+\node [box, right = 1cm of vco2] (vcf) {VCF};
+
+\node [box, gray, right = 1cm of noise] (temp1) {temp1};
+\node [box, right = 1cm of vco1] (adsr1) {ADSR};
+
+% VCF Eintrittspunkte
+\coordinate (vcf1) at ($(vcf.west)!0.5!(vcf.north west)$);
+\coordinate (vcf2) at ($(vcf.west)!0.5!(vcf.south west)$);
+% grün markiert
+\node at (vcf1){\textcolor{green}{$\times$}};
+\node at (vcf2){\textcolor{green}{$\times$}};
+
+% VCO2 Hilfspunkte
+\coordinate (vco21) at ($(vco2.north east)!0.5!(vco2.east)$);
+\coordinate (vco22) at ($(vco2.south east)!0.5!(vco2.east)$);
+% in lila
+\node at (vco21){\textcolor{magenta}{$\times$}};
+\node at (vco22){\textcolor{magenta}{$\times$}};
+
+% Mittelpunkte zwischen Noise und  temp1
+\coordinate (noisetemp1) at ($(noise.east)!0.5!(temp1.west)$);
+% und VCO1 und temp2
+\coordinate (vco1adsr1) at ($(vco1.east)!0.5!(adsr1.west)$);
+% blau markiert
+\node at (noisetemp1){\textcolor{blue}{$\times$}};
+\node at (vco1adsr1){\textcolor{blue}{$\times$}};
+
+\coordinate (vco2vcf1) at ($(vco21)!0.5!(vcf1)$);
+\coordinate (vco2vcf2) at ($(vco22)!0.5!(vcf2)$);
+\node at (vco2vcf1){\textcolor{red}{$\times$}};
+\node at (vco2vcf2){\textcolor{red}{$\times$}};
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Synthesizer-Diagramm XII}
+
+\begin{center}
+\begin{tikzpicture}[box/.style={rectangle,thick,draw=black,
+minimum width=20mm, minimum height=10mm,
+align=center,node distance=0.5cm},scale=0.85, transform shape]
+
+\node at (0,0) [box] (noise) {Noise};
+\node [box, below = of noise] (vco2) {VCO2};
+\node [box, below = of vco2] (vco1) {VCO1};
+\node [box, right = 1cm of vco2] (vcf) {VCF};
+\draw [thick,->] (vco2) -- (vcf);
+
+\coordinate (coordoffset) at ($(vco2.west)!0.5!(vco2.north west)$);
+
+\node [left = of coordoffset](offset) {offset};
+\draw [thick,->] (offset) -- (coordoffset);
+
+\node [right = 1cm of noise] (temp1) {};
+
+\coordinate (vcf1) at ($(vcf.west)!0.5!(vcf.north west)$);
+\coordinate (vcf2) at ($(vcf.west)!0.5!(vcf.south west)$);
+\coordinate (vco21) at ($(vco2.north east)!0.5!(vco2.east)$);
+\coordinate (vco22) at ($(vco2.south east)!0.5!(vco2.east)$);
+
+\node [box, right = of vcf] (vca) {VCA};
+\node [box, below = of vcf] (adsr1) {ADSR};
+\node [box, below = of vca] (adsr2) {ADSR};
+
+\node [right = 0.5cm of vca] (output) {output};
+\node [box, below left = 0.5cm of vco1] (keyboard) {Keyboard};
+
+\node [left = 1.5cm of vco1,align=center](cv) {control \\ voltage };
+
+\coordinate (noisetemp1) at ($(noise.east)!0.5!(temp1.west)$);
+\coordinate (vco1adsr1) at ($(vco1.east)!0.5!(adsr1.west)$);
+
+\coordinate (vco2vcf1) at ($(vco21)!0.5!(vcf1)$);
+\coordinate (vco2vcf2) at ($(vco22)!0.5!(vcf2)$);
+
+\draw[->,thick] (vco1.east) -- (vco1adsr1) --  (vco2vcf2) -- (vcf2);
+\draw[->,thick] (noise.east) -- (noisetemp1) --  (vco2vcf1) -- (vcf1);
+
+\draw[->,thick] (adsr1) -- (vcf);
+\draw[->,thick] (adsr2) -- (vca);
+\draw[->,thick] (vcf) -- (vca);
+\draw[->,thick] (vca) -- (output);
+
+\draw [thick,->] (keyboard) -| (adsr1);
+\draw [thick,->] (keyboard) -| (adsr2);
+\draw [thick,->] (keyboard) |- (vco1);
+\draw [thick,->] (keyboard) |- (vco2.base west);
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Persönliches Fazit}
+
+\begin{itemize}
+\item TikZ = Wow\ldots
+\item Steile Lernkurve, Diagramme werden mehr \enquote{programmiert} 
+\item Syntax ist speziell, wenn man von PS*Tricks etc. kommt
+\item Ergebnisse überzeugen aber
+\end{itemize}
+\end{frame}
+
+
+
 
 
 
