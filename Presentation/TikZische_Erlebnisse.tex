@@ -684,7 +684,7 @@ Anchors
 	\item Bisher mein komplexestes TikZ-Diagramm
 	\item Beschreibt den Signalweg in Synthesizer
 	\item Steile Lernkurve!
-\end{itemize}
+\end{itemize}\vspace*{-0.5cm}
 
 \begin{center}
 \begin{tikzpicture}[box/.style={rectangle,thick,draw=black,
@@ -744,8 +744,11 @@ align=center,node distance=0.5cm},scale=0.85, transform shape]
 \begin{frame}
 \frametitle{Synthesizer-Diagramm II}
 
-\begin{center}
+\begin{itemize}
+	\item Nodes mit absoluten Koordinaten
+\end{itemize}
 
+\begin{center}
 \scalebox{0.8}{%
 \begin{tikzpicture}[
 box/.style={rectangle,thick,draw=black,minimum width=20mm, minimum height=10mm,align=center}]
@@ -772,6 +775,50 @@ box/.style={rectangle,thick,draw=black,minimum width=20mm, minimum height=10mm,a
 
 \begin{frame}
 \frametitle{Synthesizer-Diagramm III}
+
+\begin{itemize}
+	\item Relative Koordinaten mit der \texttt{positioning} Library
+\end{itemize}
+
+\begin{center}
+\scalebox{0.8}{%
+\begin{tikzpicture}[box/.style={rectangle,thick,draw=black,minimum width=20mm, minimum height=10mm,align=center}]
+\node at (0,0) [box] (a) {a};
+\node [below = of a,box] (b)  {below};
+\node [above = of a,box] (c)  {above};
+\node [left = of a,box] (d)  {left};
+\node [right = of a,box] (e)  {right};
+\node [below left = of a,box] (f)  {below left};
+\node [below right= of a,box] (g)  {below right};
+\node [above left = of a,box] (h)  {above left};
+\node [above right= of a,box] (i)  {above right};
+\node [below right = 3cm and 5cm of a] {3d5r};
+\end{tikzpicture}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Synthesizer-Diagramm IV}
+
+\begin{lstlisting}
+\node at (0,0) [box] (a) {a};
+\node [below = of a,box] (b)  {below};
+\node [above = of a,box] (c)  {above};
+\node [left = of a,box] (d)  {left};
+\node [right = of a,box] (e)  {right};
+\node [below left = of a,box] (f)  {below left};
+\node [below right= of a,box] (g)  {below right};
+\node [above left = of a,box] (h)  {above left};
+\node [above right= of a,box] (i)  {above right};
+\node [below right = 3cm and 5cm of a] {3d5r};
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Synthesizer-Diagramm V}
 
 \begin{itemize}
 	\item Jeder Node hat vordefinierte Ankerpunkte
@@ -806,7 +853,7 @@ mystyle/.style={gray, thin}]
 \end{frame}
 
 \begin{frame}
-\frametitle{Synthesizer-Diagramm IV}
+\frametitle{Synthesizer-Diagramm VI}
 
 \begin{itemize}
 	\item Pfeil von \texttt{x.north west} nach \texttt{x.south}
@@ -840,6 +887,145 @@ mystyle/.style={gray, thin}]
 \end{center}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Synthesizer-Diagramm VII}
+
+\begin{itemize}
+\item So weit, so gut, aber\ldots
+\item Wir brauchen mehr Anker!
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[box/.style={rectangle,thick,draw=black,
+minimum width=20mm, minimum height=10mm,
+align=center,node distance=0.5cm},scale=0.85, transform shape]
+
+\node at (0,0) [box] (noise) {Noise};
+\node [box, below = of noise] (vco2) {VCO2};
+\node [box, below = of vco2] (vco1) {VCO1};
+\node [box, right = 1cm of vco2] (vcf) {VCF};
+\draw [thick,->] (vco2) -- (vcf);
+
+\coordinate (coordoffset) at ($(vco2.west)!0.5!(vco2.north west)$);
+
+\node [left = of coordoffset](offset) {offset};
+\draw [thick,->] (offset) -- (coordoffset);
+
+\node [right = 1cm of noise] (temp1) {};
+
+\coordinate (vcf1) at ($(vcf.west)!0.5!(vcf.north west)$);
+\coordinate (vcf2) at ($(vcf.west)!0.5!(vcf.south west)$);
+\coordinate (vco21) at ($(vco2.north east)!0.5!(vco2.east)$);
+\coordinate (vco22) at ($(vco2.south east)!0.5!(vco2.east)$);
+
+\node [box, right = of vcf] (vca) {VCA};
+\node [box, below = of vcf] (adsr1) {ADSR};
+\node [box, below = of vca] (adsr2) {ADSR};
+
+\node [right = 0.5cm of vca] (output) {output};
+\node [box, below left = 0.5cm of vco1] (keyboard) {Keyboard};
+
+\node [left = 1.5cm of vco1,align=center](cv) {control \\ voltage };
+
+\coordinate (noisetemp1) at ($(noise.east)!0.5!(temp1.west)$);
+\coordinate (vco1adsr1) at ($(vco1.east)!0.5!(adsr1.west)$);
+
+\coordinate (vco2vcf1) at ($(vco21)!0.5!(vcf1)$);
+\coordinate (vco2vcf2) at ($(vco22)!0.5!(vcf2)$);
+
+\draw[->,thick] (vco1.east) -- (vco1adsr1) --  (vco2vcf2) -- (vcf2);
+\draw[->,thick] (noise.east) -- (noisetemp1) --  (vco2vcf1) -- (vcf1);
+
+\draw[->,thick] (adsr1) -- (vcf);
+\draw[->,thick] (adsr2) -- (vca);
+\draw[->,thick] (vcf) -- (vca);
+\draw[->,thick] (vca) -- (output);
+
+\draw [thick,->] (keyboard) -| (adsr1);
+\draw [thick,->] (keyboard) -| (adsr2);
+\draw [thick,->] (keyboard) |- (vco1);
+\draw [thick,->] (keyboard) |- (vco2.base west);
+
+\draw [red,thick](-1,-1.4) circle (28pt);
+\draw [red,thick](1.75,-1.4) circle (28pt);
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Synthesizer-Diagramm VIII}
+
+\begin{itemize}
+	\item Zu berechnende Punkte
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[
+box/.style={rectangle,thick,draw=black,
+minimum width=20mm, minimum height=10mm,
+align=center,node distance=0.5cm}]
+
+\node at (0,0) [box] (noise) {Noise};
+\node [box, below = of noise] (vco2) {VCO2};
+\node [box, below = of vco2] (vco1) {VCO1};
+\node [box, right = 1cm of vco2] (vcf) {VCF};
+
+\coordinate (coordoffset) at ($(vco2.west)!0.5!(vco2.north west)$);
+\node at (coordoffset){\textcolor{red}{$\times$}};
+
+\node [right = 1cm of noise] (temp1) {};
+\node [right = 1cm of vco1] (temp2) {};
+
+\coordinate (vcf1) at ($(vcf.west)!0.5!(vcf.north west)$);
+\coordinate (vcf2) at ($(vcf.west)!0.5!(vcf.south west)$);
+\coordinate (vco21) at ($(vco2.north east)!0.5!(vco2.east)$);
+\coordinate (vco22) at ($(vco2.south east)!0.5!(vco2.east)$);
+
+\node at (vcf1){\textcolor{blue}{\textbullet}};
+\node at (vcf2){\textcolor{red}{\textasteriskcentered}};
+
+\coordinate (noisetemp1) at ($(noise.east)!0.5!(temp1.west)$);
+\coordinate (vco1temp2) at ($(vco1.east)!0.5!(temp2.west)$);
+
+\node at (noisetemp1){\textcolor{blue}{\textbullet}};
+\node at (vco1temp2){\textcolor{red}{\textasteriskcentered}};
+
+\node at (vco21){\textcolor{blue}{}};
+\node at (vco22){\textcolor{blue}{}};
+
+\coordinate (vco2vcf1) at ($(vco21)!0.5!(vcf1)$);
+\coordinate (vco2vcf2) at ($(vco22)!0.5!(vcf2)$);
+
+\node at (vco2vcf1){\textcolor{blue}{\textbullet}};
+\node at (vco2vcf2){\textcolor{red}{\textasteriskcentered}};
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Synthesizer-Diagramm IX}
+
+\begin{itemize}
+\item Koordinatenberechnungen mit der \texttt{calc} Library
+\end{itemize}
+
+\begin{lstlisting}
+($<coordinate>!<number>!<coordinate>$)
+\end{lstlisting}
+
+\begin{itemize}
+	\item \texttt{<coordinate>} steht dabei für eine Koordinate, die -- vielleicht etwas vereinfachend erklärt -- einfach nur ein Node ohne den (optionalen) Text ist.
+	\item  \texttt{<number>} ist Zahl zwischen 0 und 1 und gibt die Prozente an, um den wir uns von Koordinate 1 zu Koordinate 2 bewegen. 
+	\item  \texttt{0.25} steht also für ein Viertel des Weges 
+\end{itemize}
+
+
+\end{frame}
+
 
 
 \end{document}
