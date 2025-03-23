@@ -1,0 +1,32 @@
+\documentclass[tikz,border=0.5cm]{standalone}
+\usetikzlibrary{positioning} 
+\renewcommand\familydefault{\sfdefault}
+
+\usepackage{listofitems}
+\setsepchar{;}
+
+\begin{document}
+\begin{tikzpicture}[font=\bfseries,thick]
+\coordinate (o) at (8,8);
+\draw[black,thick,fill=lightgray] (o) circle (29.75mm);
+
+\readlist\distances{77.5;69.75;61.75;53.75;45.75;37.75;21.75;13.75;5.75}
+\foreachitem\distance\in\distances{
+	\draw[black] (o) circle (\distance mm);
+}
+
+\readlist\distances{7.1;6.3;5.5;4.7;3.9;3.1;2.3;1.5;0.7}
+\readlist\directions{right;above;left;below}
+
+\foreachitem\direction\in\directions{
+	\foreachitem\distance\in\distances{
+        
+\node[\direction=\distance cm of o] {\distancecnt};
+        }
+}
+\end{tikzpicture}
+\end{document}
+
+
+
+
