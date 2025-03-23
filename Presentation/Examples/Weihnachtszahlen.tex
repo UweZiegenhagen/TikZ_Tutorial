@@ -1,0 +1,51 @@
+\documentclass[fontsize=6pt]{scrartcl}
+\usepackage[a4paper,left=0.5cm,right=0.5cm,top=0.5cm,bottom=0.5cm]{geometry}
+ 
+\renewcommand{\familydefault}{\sfdefault}
+\RequirePackage[scaled=0.9]{helvet}
+\usepackage{tikz}
+\pagestyle{empty}
+ 
+
+\begin{document}  
+ \vspace*{1cm} 
+\begin{center}
+\begin{tikzpicture}
+[
+    x=43mm,y=43mm,
+    mybox/.style={circle,minimum width=40mm, minimum height=6mm},
+	month/.style={mybox,align=center,draw=black,thick,font=\bfseries\Huge}]
+    
+\node at (0,0) [month] {\scalebox{5}{1}};
+\node at (1,0) [month] {\scalebox{5}{2}};
+\node at (2,0) [month] {\scalebox{5}{3}};
+\node at (3,0) [month] {\scalebox{5}{4}};
+
+\node at (0,-1) [month] {\scalebox{5}{5}};
+\node at (1,-1) [month] {\scalebox{5}{6}};
+\node at (2,-1) [month] {\scalebox{5}{7}};
+\node at (3,-1) [month] {\scalebox{5}{8}};
+
+\node at (0,-2) [month] {\scalebox{5}{9}};
+\node at (1,-2) [month] {\scalebox{5}{10}};
+\node at (2,-2) [month] {\scalebox{5}{11}};
+\node at (3,-2) [month] {\scalebox{5}{12}};
+
+\node at (0,-3) [month] {\scalebox{5}{13}};
+\node at (1,-3) [month] {\scalebox{5}{14}};
+\node at (2,-3) [month] {\scalebox{5}{15}};
+\node at (3,-3) [month] {\scalebox{5}{16}};
+
+\node at (0,-4) [month] {\scalebox{5}{17}};
+\node at (1,-4) [month] {\scalebox{5}{18}};
+\node at (2,-4) [month] {\scalebox{5}{19}};
+\node at (3,-4) [month] {\scalebox{5}{20}};
+
+\node at (0,-5) [month] {\scalebox{5}{21}};
+\node at (1,-5) [month] {\scalebox{5}{22}};
+\node at (2,-5) [month] {\scalebox{5}{23}};
+\node at (3,-5) [month] {\scalebox{5}{24}};
+\end{tikzpicture}
+\end{center}
+ 
+\end{document}

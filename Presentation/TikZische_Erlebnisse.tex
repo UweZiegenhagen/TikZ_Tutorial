@@ -12,7 +12,8 @@
 \usetikzlibrary{shapes}
 \usetikzlibrary{shadows}
 \usetikzlibrary{positioning}
-
+\usetikzlibrary{calc}
+\usepackage{calc}
 \usepackage{listings}
 \usepackage{bera}
  
@@ -360,13 +361,10 @@ Anchors
 
 \begin{itemize}
 	\item Zielscheibe 10m Luftpistole
-	\item Matrix
+	\item Weihnachtszahlen
 	\item Kalender
-	\item 
-	\item 
-	\item 
-	\end{itemize}
-
+	\item Synthesizer-Diagramm
+\end{itemize}
 \end{frame}
 
 
@@ -534,10 +532,317 @@ Anchors
    }}
 \end{lstlisting}
 
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Weihnachtszahlen I}
+
+
+\begin{itemize}
+\item Zahlen 1--24 für Weihnachten
+\item DIN A4 Blatt gut ausfüllen
+\item (Manuelle) Matrix von Nodes 
+\end{itemize}
+
+\begin{lstlisting}
+\node at (0,0) {1};
+\node at (1,0) {2};
+\node at (2,0) {3};
+\node at (3,0) {4};
+
+\node at (0,-1) {5};
+\node at (1,-1) {6};
+\node at (2,-1) {7};
+\node at (3,-1) {8};
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Weihnachtszahlen II}
+
+\begin{center}
+\begin{tikzpicture}
+\node at (0,0) {1};
+\node at (1,0) {2};
+\node at (2,0) {3};
+\node at (3,0) {4};
+
+\node at (0,-1) {5};
+\node at (1,-1) {6};
+\node at (2,-1) {7};
+\node at (3,-1) {8};
+
+\node at (0,-2) {9};
+\node at (1,-2) {10};
+\node at (2,-2) {11};
+\node at (3,-2) {12};
+
+\node at (0,-3) {13};
+\node at (1,-3) {14};
+\node at (2,-3) {15};
+\node at (3,-3) {16};
+
+\node at (0,-4) {17};
+\node at (1,-4) {18};
+\node at (2,-4) {19};
+\node at (3,-4) {20};
+
+\node at (0,-5) {21};
+\node at (1,-5) {22};
+\node at (2,-5) {23};
+\node at (3,-5) {24};
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Weihnachtszahlen III}
+
+
+\begin{lstlisting}
+\tikzstyle{every node}=[circle,draw=black]
+
+\node at (0,0) {1};
+\node at (1,0) {2};
+\node at (2,0) {3};
+\node at (3,0) {4};
+
+\node at (0,-1) {5};
+\node at (1,-1) {6};
+\node at (2,-1) {7};
+\node at (3,-1) {8};
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Weihnachtszahlen IV}
+
+
+\begin{lstlisting}
+\tikzstyle{every node}=[circle,draw=black,font=\fontsize{80}{80}\selectfont,x=41mm,y=41mm,minimum width=40mm,thick]
+
+\node at (0,0) {1};
+\node at (1,0) {2};
+\node at (2,0) {3};
+\node at (3,0) {4};
+
+\node at (0,-1) {5};
+\node at (1,-1) {6};
+\node at (2,-1) {7};
+\node at (3,-1) {8};
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+
+\begin{center}
+\includegraphics[width=7cm]{./Examples/Weihnachtszahlen-3}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Kalender I}
+
+\begin{itemize}
+	\item Excel nutzen, um Kalender zu \enquote{bauen}
+	\item Gleiches Konzept wie bei den Weihnachtszahlen: viele Nodes
+\end{itemize}
+
+\begin{lstlisting}
+=WENNFEHLER("\node at (" & C$2-1 &"," & -1* $B3 & ") [" & WENN(LINKS(TEXT(DATWERT($B3&"."&C$2&"."&$B$2);"TTT");1)="S";"weekend";"workday") & "] {\hspace*{-0.9em}{"  & TEXT(DATWERT($B3&"."&C$2&"."&$B$2);"TTT")   & "}};";"")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Kalender II}
+
+\begin{itemize}
+	\item Excel = Lebensnotwendigkeit für BWLer
+	\item \lstinline|\node at (0,-1) [workday] {\hspace*{-0.9em}{Mi}};|
+\end{itemize}\vspace*{-0.5cm}
+
+\begin{center}
+\fbox{\includegraphics[width=1\textwidth]{./Examples/Kalendermacher_blog_Excel}}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Kalender III}
+
+\begin{center}
+\fbox{\includegraphics[width=0.95\textwidth]{./Examples/Kalender-2025}}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Synthesizer-Diagramm I}
+
+\begin{itemize}
+	\item Bisher mein komplexestes TikZ-Diagramm
+	\item Beschreibt den Signalweg in Synthesizer
+	\item Steile Lernkurve!
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[box/.style={rectangle,thick,draw=black,
+minimum width=20mm, minimum height=10mm,
+align=center,node distance=0.5cm},scale=0.85, transform shape]
+
+\node at (0,0) [box] (noise) {Noise};
+\node [box, below = of noise] (vco2) {VCO2};
+\node [box, below = of vco2] (vco1) {VCO1};
+\node [box, right = 1cm of vco2] (vcf) {VCF};
+\draw [thick,->] (vco2) -- (vcf);
+
+\coordinate (coordoffset) at ($(vco2.west)!0.5!(vco2.north west)$);
+
+\node [left = of coordoffset](offset) {offset};
+\draw [thick,->] (offset) -- (coordoffset);
+
+\node [right = 1cm of noise] (temp1) {};
+
+\coordinate (vcf1) at ($(vcf.west)!0.5!(vcf.north west)$);
+\coordinate (vcf2) at ($(vcf.west)!0.5!(vcf.south west)$);
+\coordinate (vco21) at ($(vco2.north east)!0.5!(vco2.east)$);
+\coordinate (vco22) at ($(vco2.south east)!0.5!(vco2.east)$);
+
+\node [box, right = of vcf] (vca) {VCA};
+\node [box, below = of vcf] (adsr1) {ADSR};
+\node [box, below = of vca] (adsr2) {ADSR};
+
+\node [right = 0.5cm of vca] (output) {output};
+\node [box, below left = 0.5cm of vco1] (keyboard) {Keyboard};
+
+\node [left = 1.5cm of vco1,align=center](cv) {control \\ voltage };
+
+\coordinate (noisetemp1) at ($(noise.east)!0.5!(temp1.west)$);
+\coordinate (vco1adsr1) at ($(vco1.east)!0.5!(adsr1.west)$);
+
+\coordinate (vco2vcf1) at ($(vco21)!0.5!(vcf1)$);
+\coordinate (vco2vcf2) at ($(vco22)!0.5!(vcf2)$);
+
+\draw[->,thick] (vco1.east) -- (vco1adsr1) --  (vco2vcf2) -- (vcf2);
+\draw[->,thick] (noise.east) -- (noisetemp1) --  (vco2vcf1) -- (vcf1);
+
+\draw[->,thick] (adsr1) -- (vcf);
+\draw[->,thick] (adsr2) -- (vca);
+\draw[->,thick] (vcf) -- (vca);
+\draw[->,thick] (vca) -- (output);
+
+\draw [thick,->] (keyboard) -| (adsr1);
+\draw [thick,->] (keyboard) -| (adsr2);
+\draw [thick,->] (keyboard) |- (vco1);
+\draw [thick,->] (keyboard) |- (vco2.base west);
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Synthesizer-Diagramm II}
+
+\begin{center}
+
+\scalebox{0.8}{%
+\begin{tikzpicture}[
+box/.style={rectangle,thick,draw=black,minimum width=20mm, minimum height=10mm,align=center}]
+\draw[step=1cm,lightgray,thin] (-1,0) grid (11,7);
+\node at (2,6) [box] (noise) {Noise};
+\node at (2,4.5) [box] (vco2)  {VCO2};
+\node at (2,3) [box] (vco1) {VCO1};
+\node at (5,4.5) [box]  (vcf) {VCF};
+\node at (8,4.5) [box] (vca) {VCA};
+\node at (5,2.5) [box] (adsr1) {ADSR};
+\node at (8,2.5) [box] (adsr2) {ADSR};
+\node at (0,1) [box] (keyboard) {Keyboard};
+
+\node at (0,5) (offset) {offset};
+\node at (10.5,4.5) (output) {output};
+\node at (2,1.25) (gate) {gate};
+
+\node [align=center] at (-0.75,3) (cv) {control \\ voltage};
+\end{tikzpicture}}
+\end{center}
 
 \end{frame}
 
 
+\begin{frame}
+\frametitle{Synthesizer-Diagramm III}
+
+\begin{itemize}
+	\item Jeder Node hat vordefinierte Ankerpunkte
+\end{itemize}
+
+\begin{center}
+\scalebox{1.15}{%
+\begin{tikzpicture}[
+every node/.style={font=\ttfamily\scriptsize},
+mystyle/.style={gray, thin}]
+
+\node[name=x,gray, rectangle, draw,mystyle, minimum width=5cm, minimum height=3cm] {};
+
+\draw[mystyle]  (x.north) -- (x.south);
+\draw[mystyle]  (x.east) -- (x.west);
+\draw[mystyle]  (x.north east) -- (x.south west);
+\draw[mystyle]  (x.south east) -- (x.north west);
+
+\draw[] plot[mark=x] coordinates{(x.center)} node[above]{(x.center)};
+
+\draw[] plot[mark=x] coordinates{(x.north)} node[above]{(x.north)};
+\draw[] plot[mark=x] coordinates{(x.east)} node[right]{(x.east)};
+\draw[] plot[mark=x] coordinates{(x.south)} node[below]{(x.south)};
+\draw[] plot[mark=x] coordinates{(x.west)} node[left]{(x.west)};
+\draw[] plot[mark=x] coordinates{(x.north east)} node[right]{(x.north east)};
+\draw[] plot[mark=x] coordinates{(x.south east)} node[right]{(x.south east)};
+\draw[] plot[mark=x] coordinates{(x.south west)} node[left]{(x.south west)};
+\draw[] plot[mark=x] coordinates{(x.north west)} node[left]{(x.north west)};
+\end{tikzpicture}}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Synthesizer-Diagramm IV}
+
+\begin{itemize}
+	\item Pfeil von \texttt{x.north west} nach \texttt{x.south}
+	\end{itemize}
+
+\begin{center}
+\scalebox{1.15}{%
+\begin{tikzpicture}[
+every node/.style={font=\ttfamily\scriptsize},
+mystyle/.style={gray, thin}]
+
+\node[name=x,gray, rectangle, draw,mystyle, minimum width=5cm, minimum height=3cm] {};
+
+\draw[mystyle]  (x.north) -- (x.south);
+\draw[mystyle]  (x.east) -- (x.west);
+\draw[mystyle]  (x.north east) -- (x.south west);
+\draw[mystyle]  (x.south east) -- (x.north west);
+
+\draw[] plot[mark=x] coordinates{(x.center)} node[above]{(x.center)};
+
+\draw[] plot[mark=x] coordinates{(x.north)} node[above]{(x.north)};
+\draw[] plot[mark=x] coordinates{(x.east)} node[right]{(x.east)};
+\draw[] plot[mark=x] coordinates{(x.south)} node[below]{(x.south)};
+\draw[] plot[mark=x] coordinates{(x.west)} node[left]{(x.west)};
+\draw[] plot[mark=x] coordinates{(x.north east)} node[right]{(x.north east)};
+\draw[] plot[mark=x] coordinates{(x.south east)} node[right]{(x.south east)};
+\draw[] plot[mark=x] coordinates{(x.south west)} node[left]{(x.south west)};
+\draw[] plot[mark=x] coordinates{(x.north west)} node[left]{(x.north west)};
+\draw[->,red,thick] (x.north west) -- (x.south);
+\end{tikzpicture}}
+\end{center}
+
+\end{frame}
 
 
 \end{document}
+
+
+
