@@ -889,7 +889,7 @@ box/.style={rectangle,thick,draw=black,minimum width=20mm, minimum height=10mm,a
 
 
 \begin{frame}
-\frametitle{Synthesizer-Diagramm V}
+\frametitle{Synthesizer-Diagramm III}
 
 \begin{itemize}
 	\item Jeder Node hat vordefinierte Ankerpunkte
@@ -924,7 +924,7 @@ mystyle/.style={gray, thin}]
 \end{frame}
 
 \begin{frame}
-\frametitle{Synthesizer-Diagramm VI}
+\frametitle{Synthesizer-Diagramm IV}
 
 \begin{itemize}
 	\item Pfeil von \texttt{x.north west} nach \texttt{x.south}
@@ -959,8 +959,9 @@ mystyle/.style={gray, thin}]
 
 \end{frame}
 
+
 \begin{frame}
-\frametitle{Synthesizer-Diagramm VII}
+\frametitle{Synthesizer-Diagramm V}
 
 \begin{itemize}
 \item So weit, so gut, aber\ldots
@@ -972,54 +973,37 @@ mystyle/.style={gray, thin}]
 minimum width=20mm, minimum height=10mm,
 align=center,node distance=0.5cm},scale=0.85, transform shape]
 
-\node at (0,0) [box] (noise) {Noise};
-\node [box, below = of noise] (vco2) {VCO2};
-\node [box, below = of vco2] (vco1) {VCO1};
-\node [box, right = 1cm of vco2] (vcf) {VCF};
+\node at (2,6) [box] (noise) {Noise};
+\node at (2,4.5) [box] (vco2)  {VCO2};
+\node at (2,3) [box] (vco1) {VCO1};
+\node at (5,4.5) [box]  (vcf) {VCF};
+\node at (8,4.5) [box] (vca) {VCA};
+\node at (5,2.5) [box] (adsr1) {ADSR};
+\node at (8,2.5) [box] (adsr2) {ADSR};
+\node at (0,1) [box] (keyboard) {Keyboard};
+
+\node at (0,4.81) (offset) {offset};
+\node at (10.5,4.5) (output) {output};
+\node at (2,1.25) (gate) {gate};
+
+\node at (-0.75,3) (cv) {\parbox{\widthof{control}}{
+    control \\ voltage }};
+
+\draw [thick,->] (vco1) to [out=0,in=190]  (vcf);
 \draw [thick,->] (vco2) -- (vcf);
-
-\coordinate (coordoffset) at ($(vco2.west)!0.5!(vco2.north west)$);
-
-\node [left = of coordoffset](offset) {offset};
-\draw [thick,->] (offset) -- (coordoffset);
-
-\node [right = 1cm of noise] (temp1) {};
-
-\coordinate (vcf1) at ($(vcf.west)!0.5!(vcf.north west)$);
-\coordinate (vcf2) at ($(vcf.west)!0.5!(vcf.south west)$);
-\coordinate (vco21) at ($(vco2.north east)!0.5!(vco2.east)$);
-\coordinate (vco22) at ($(vco2.south east)!0.5!(vco2.east)$);
-
-\node [box, right = of vcf] (vca) {VCA};
-\node [box, below = of vcf] (adsr1) {ADSR};
-\node [box, below = of vca] (adsr2) {ADSR};
-
-\node [right = 0.5cm of vca] (output) {output};
-\node [box, below left = 0.5cm of vco1] (keyboard) {Keyboard};
-
-\node [left = 1.5cm of vco1,align=center](cv) {control \\ voltage };
-
-\coordinate (noisetemp1) at ($(noise.east)!0.5!(temp1.west)$);
-\coordinate (vco1adsr1) at ($(vco1.east)!0.5!(adsr1.west)$);
-
-\coordinate (vco2vcf1) at ($(vco21)!0.5!(vcf1)$);
-\coordinate (vco2vcf2) at ($(vco22)!0.5!(vcf2)$);
-
-\draw[->,thick] (vco1.east) -- (vco1adsr1) --  (vco2vcf2) -- (vcf2);
-\draw[->,thick] (noise.east) -- (noisetemp1) --  (vco2vcf1) -- (vcf1);
-
-\draw[->,thick] (adsr1) -- (vcf);
-\draw[->,thick] (adsr2) -- (vca);
-\draw[->,thick] (vcf) -- (vca);
-\draw[->,thick] (vca) -- (output);
-
+\draw [thick,->] (adsr1) -- (vcf);
+\draw [thick,->] (adsr2) -- (vca);
 \draw [thick,->] (keyboard) -| (adsr1);
 \draw [thick,->] (keyboard) -| (adsr2);
 \draw [thick,->] (keyboard) |- (vco1);
 \draw [thick,->] (keyboard) |- (vco2.base west);
+\draw [thick,->] (noise) to [out=0,in=170]  (vcf);
+\draw [thick,->] (vcf) -- (vca);
+\draw [thick,->] (vca) -- (output);
+\draw [thick,->] (offset.base east) to [out=0,in=171] (vco2);
 
-\draw [red,thick](-1,-1.4) circle (28pt);
-\draw [red,thick](1.75,-1.4) circle (28pt);
+\draw [red,thick](1,4.5) circle (28pt);
+\draw [red,thick](3.8,4.5) circle (28pt);
 \end{tikzpicture}
 \end{center}
 
@@ -1027,7 +1011,7 @@ align=center,node distance=0.5cm},scale=0.85, transform shape]
 
 
 \begin{frame}
-\frametitle{Synthesizer-Diagramm VIII}
+\frametitle{Synthesizer-Diagramm VI}
 
 \begin{itemize}
 	\item Zu berechnende Punkte
@@ -1078,7 +1062,7 @@ align=center,node distance=0.5cm}]
 \end{frame}
 
 \begin{frame}[containsverbatim]
-\frametitle{Synthesizer-Diagramm IX}
+\frametitle{Synthesizer-Diagramm VII}
 
 \begin{itemize}
 \item Koordinatenberechnungen mit der \texttt{calc} Library
@@ -1089,7 +1073,7 @@ align=center,node distance=0.5cm}]
 \end{lstlisting}
 
 \begin{itemize}
-	\item \texttt{<coordinate>} steht dabei für eine Koordinate, die -- vielleicht etwas vereinfachend erklärt -- einfach nur ein Node ohne den (optionalen) Text ist.
+	\item \texttt{<coordinate>} steht dabei für eine Koordinate, ein Node ohne Text ist.
 	\item  \texttt{<number>} ist Zahl zwischen 0 und 1 und gibt die Prozente an, um den wir uns von Koordinate 1 zu Koordinate 2 bewegen. 
 	\item  \texttt{0.25} steht also für ein Viertel des Weges 
 \end{itemize}
@@ -1097,7 +1081,7 @@ align=center,node distance=0.5cm}]
 \end{frame}
 
 \begin{frame}[containsverbatim]
-\frametitle{Synthesizer-Diagramm X}
+\frametitle{Synthesizer-Diagramm VIII}
 
 
 \begin{lstlisting}
@@ -1130,7 +1114,7 @@ align=center,node distance=0.5cm}]
 
 
 \begin{frame}[containsverbatim]
-\frametitle{Synthesizer-Diagramm XI}
+\frametitle{Synthesizer-Diagramm IX}
 
 \begin{center}
 \begin{tikzpicture}[scale=1.5, transform shape,
@@ -1180,7 +1164,11 @@ align=center,node distance=0.5cm}]
 
 
 \begin{frame}
-\frametitle{Synthesizer-Diagramm XII}
+\frametitle{Synthesizer-Diagramm X}
+
+\begin{itemize}
+	\item Finales Diagramm
+\end{itemize}
 
 \begin{center}
 \begin{tikzpicture}[box/.style={rectangle,thick,draw=black,
@@ -1244,12 +1232,12 @@ align=center,node distance=0.5cm},scale=0.85, transform shape]
 \begin{itemize}
 	\item Wow\ldots
 \item Riesige Bandbreite der Möglichkeiten 
-\item Steile Lernkurve
+\item Steile Lernkurve $\rightarrow$ ChatGPT \& Co können diese abflachen
 \item Tolle Ergebnisse
 \end{itemize}
 
 \begin{center}
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=1.5]
 \cat[contour=black]
 \end{tikzpicture}
 \end{center}
