@@ -7,13 +7,18 @@
 \usepackage{babel}
 \usepackage{graphicx}
 \usepackage{csquotes}
+
+
+\usepackage{listofitems}
+\setsepchar{;}
+
 \usepackage{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{shapes}
 \usetikzlibrary{shadows}
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
-\usepackage{calc}
+\usepackage{calc,tikzlings}
 \usepackage{listings}
 \usepackage{bera}
  
@@ -46,7 +51,6 @@
     language={[LaTeX]TeX},
     morekeywords={draw,node,node,coordinate,grid,rounded,thick, corners,very,minimum,fill,width,height,rectangle,step,thin,readlist,foreachitem,setsepchar}
 }
- 
 
 \lstset{literate=%
     {Ö}{{\"O}}1
@@ -78,6 +82,7 @@
 \begin{itemize}
 \item Kurze (nicht vollständige) Vorstellung \newline von TikZ-Grundlagen
 \item Beispiele, Beispiele, Beispiele\ldots 
+\item Siehe auch \url{https://github.com/UweZiegenhagen/TikZ_Tutorial}
 \end{itemize}
 
 \end{frame}
@@ -117,6 +122,7 @@
 \end{frame}
 
 
+
 \begin{frame}[containsverbatim]
 \frametitle{Liniendicken}
 
@@ -154,24 +160,24 @@
 
 \begin{lstlisting}
 \begin{tikzpicture}
-\draw[thick, dashed] (2,1) -- (2,3);
-\draw[thick, loosely dashed] (2.5,1) -- (2.5,3);
-\draw[thick, densely dashed] (3,1) -- (3,3);
-\draw[thick, dotted] (3.5,1) -- (3.5,3);
-\draw[thick, loosely dotted] (4,1) -- (4,3);
-\draw[thick, densely dotted] (4.5,1) -- (4.5,3);
+\draw[very thick, dashed] (2,1) -- (2,3);
+\draw[very thick, loosely dashed] (2.5,1) -- (2.5,3);
+\draw[very thick, densely dashed] (3,1) -- (3,3);
+\draw[very thick, dotted] (3.5,1) -- (3.5,3);
+\draw[very thick, loosely dotted] (4,1) -- (4,3);
+\draw[very thick, densely dotted] (4.5,1) -- (4.5,3);
 \end{tikzpicture}
 \end{lstlisting}
 
 
 \begin{center}
 \begin{tikzpicture}
-\draw[thick, dashed] (2,1) -- (2,3);
-\draw[thick, loosely dashed] (2.5,1) -- (2.5,3);
-\draw[thick, densely dashed] (3,1) -- (3,3);
-\draw[thick, dotted] (3.5,1) -- (3.5,3);
-\draw[thick, loosely dotted] (4,1) -- (4,3);
-\draw[thick, densely dotted] (4.5,1) -- (4.5,3);
+\draw[very thick, dashed] (2,1) -- (2,3);
+\draw[very thick, loosely dashed] (2.5,1) -- (2.5,3);
+\draw[very thick, densely dashed] (3,1) -- (3,3);
+\draw[very thick, dotted] (3.5,1) -- (3.5,3);
+\draw[very thick, loosely dotted] (4,1) -- (4,3);
+\draw[very thick, densely dotted] (4.5,1) -- (4.5,3);
 \end{tikzpicture}
 \end{center}
 
@@ -213,7 +219,7 @@ ohne Update der Koordinaten
 \begin{tikzpicture}
 \draw[step=1cm,blue,thin] (0,0) grid (10,4);
 
-\draw[thick, red] (1,0.5) -- ++(4,1) -- ++(-1,1) -- ++(3,1);
+\draw[thick, red] (2.5,1.5) -- +(1,1) -- +(-1,1);
 \end{tikzpicture}
 \end{lstlisting}
 
@@ -239,11 +245,11 @@ ohne Update der Koordinaten
 \draw[step=1cm,blue,thin] (0,0) grid (10,3);
 
 \coordinate (a) at (1,1);
-\coordinate (b) at (5,3);
+\coordinate (b) at (3,2);
 \draw[red, thick] (a) -- (b);
 
-\node (c) at (3,1){c};
-\node (d) at (7,3){d};
+\node (c) at (4,1){c};
+\node (d) at (6,2){d};
 \draw[red, thick] (c) -- (d);
 \end{tikzpicture}
 \end{lstlisting}
@@ -289,7 +295,7 @@ ohne Update der Koordinaten
 \end{center}
 
 \begin{itemize}
-	\item more with \verb|\usetikzlibrary{shapes}|
+	\item mehr mit \verb|\usetikzlibrary{shapes}|
 \end{itemize}
 
 \end{frame}
@@ -298,7 +304,7 @@ ohne Update der Koordinaten
 
 
 \begin{frame}[containsverbatim]
-\frametitle{Mehr Node Shapes}
+\frametitle{Die  \texttt{shapes} Bibliothek}
 
 \begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
 \begin{tikzpicture}
@@ -408,6 +414,51 @@ ohne Update der Koordinaten
 \end{frame}
 
 
+
+\begin{frame}
+\frametitle{Exkurs Positioning Library I}
+
+\begin{itemize}
+	\item Relative Koordinaten mit der \texttt{positioning} Library
+\end{itemize}
+
+\begin{center}
+\scalebox{0.8}{%
+\begin{tikzpicture}[box/.style={rectangle,thick,draw=black,minimum width=20mm, minimum height=10mm,align=center}]
+\node at (0,0) [box] (a) {a};
+\node [below = of a,box] (b)  {below};
+\node [above = of a,box] (c)  {above};
+\node [left = of a,box] (d)  {left};
+\node [right = of a,box] (e)  {right};
+\node [below left = of a,box] (f)  {below left};
+\node [below right= of a,box] (g)  {below right};
+\node [above left = of a,box] (h)  {above left};
+\node [above right= of a,box] (i)  {above right};
+\node [below right = 3cm and 5cm of a,box] {3d5r};
+\end{tikzpicture}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Exkurs Positioning Library II}
+
+\begin{lstlisting}
+\node at (0,0) [box] (a) {a};
+\node [below = of a,box] (b)  {below};
+\node [above = of a,box] (c)  {above};
+\node [left = of a,box] (d)  {left};
+\node [right = of a,box] (e)  {right};
+\node [below left = of a,box] (f)  {below left};
+\node [below right= of a,box] (g)  {below right};
+\node [above left = of a,box] (h)  {above left};
+\node [above right= of a,box] (i)  {above right};
+\node [below right = 3cm and 5cm of a,box] {3d5r};
+\end{lstlisting}
+
+\end{frame}
+
 \begin{frame}[containsverbatim]
 \frametitle{Zielscheibe Luftpistole III} % [basicstyle=\ttfamily\scriptsize]
 
@@ -515,19 +566,43 @@ ohne Update der Koordinaten
 \setsepchar{;}
 \coordinate (o) at (8,8);
 \draw[black,thick,fill=lightgray] (o) circle (29.75mm);
-\readlist\distances{77.5;69.75;61.75;53.75;45.75;37.75;21.75;13.75;5.75}
-\foreachitem\distance\in\distances{
-	\draw[black] (o) circle (\distance mm);
+\readlist\kreise{77.5;69.75;61.75;53.75;45.75;37.75;21.75;13.75;5.75}
+\foreachitem\kreis\in\kreise{
+	\draw[black] (o) circle (\kreis mm);
 }
-\readlist\distances{7.1;6.3;5.5;4.7;3.9;3.1;2.3;1.5;0.7}
+\readlist\labels{7.1;6.3;5.5;4.7;3.9;3.1;2.3;1.5;0.7}
 \readlist\directions{right;above;left;below}
 \foreachitem\direction\in\directions{
-  \foreachitem\distance\in\distances{
-    \node[\direction=\distance cm of o] {\distancecnt};
+  \foreachitem\label\in\labels{
+    \node[\direction=\label cm of o] {\labelcnt};
    }}
 \end{lstlisting}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Zielscheibe Luftpistole VI}
+
+\begin{center}
+\resizebox{8cm}{8cm}{%
+\begin{tikzpicture}
+\coordinate (o) at (8,8);
+\draw[black,thick,fill=lightgray] (o) circle (29.75mm);
+\readlist\kreise{77.5;69.75;61.75;53.75;45.75;37.75;21.75;13.75;5.75}
+\foreachitem\kreis\in\kreise{
+	\draw[black] (o) circle (\kreis mm);
+}
+\readlist\labels{7.1;6.3;5.5;4.7;3.9;3.1;2.3;1.5;0.7}
+\readlist\directions{right;above;left;below}
+\foreachitem\direction\in\directions{
+  \foreachitem\label\in\labels{
+    \node[\direction=\label cm of o] {\labelcnt};
+   }}
+\end{tikzpicture}}
+\end{center}
+\end{frame}
+
+
 
 \begin{frame}[containsverbatim]
 \frametitle{Weihnachtszahlen I}
@@ -610,8 +685,50 @@ ohne Update der Koordinaten
 \end{lstlisting}
 \end{frame}
 
+
+
 \begin{frame}[containsverbatim]
 \frametitle{Weihnachtszahlen IV}
+
+\begin{center}
+\begin{tikzpicture}
+\tikzstyle{every node}=[circle,draw=black]
+\node at (0,0) {1};
+\node at (1,0) {2};
+\node at (2,0) {3};
+\node at (3,0) {4};
+
+\node at (0,-1) {5};
+\node at (1,-1) {6};
+\node at (2,-1) {7};
+\node at (3,-1) {8};
+
+\node at (0,-2) {9};
+\node at (1,-2) {10};
+\node at (2,-2) {11};
+\node at (3,-2) {12};
+
+\node at (0,-3) {13};
+\node at (1,-3) {14};
+\node at (2,-3) {15};
+\node at (3,-3) {16};
+
+\node at (0,-4) {17};
+\node at (1,-4) {18};
+\node at (2,-4) {19};
+\node at (3,-4) {20};
+
+\node at (0,-5) {21};
+\node at (1,-5) {22};
+\node at (2,-5) {23};
+\node at (3,-5) {24};
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Weihnachtszahlen V}
 
 
 \begin{lstlisting}
@@ -641,8 +758,10 @@ ohne Update der Koordinaten
 \frametitle{Kalender I}
 
 \begin{itemize}
+	\item Excel = Lebensnotwendigkeit für BWLer
 	\item Excel nutzen, um Kalender zu \enquote{bauen}
 	\item Gleiches Konzept wie bei den Weihnachtszahlen: viele Nodes
+	\item Excel-Formel
 \end{itemize}
 
 \begin{lstlisting}
@@ -654,7 +773,6 @@ ohne Update der Koordinaten
 \frametitle{Kalender II}
 
 \begin{itemize}
-	\item Excel = Lebensnotwendigkeit für BWLer
 	\item \lstinline|\node at (0,-1) [workday] {\hspace*{-0.9em}{Mi}};|
 \end{itemize}\vspace*{-0.5cm}
 
@@ -741,6 +859,7 @@ align=center,node distance=0.5cm},scale=0.85, transform shape]
 
 \begin{itemize}
 	\item Nodes mit absoluten Koordinaten
+\item Besser mit relativen Koordinaten arbeiten!
 \end{itemize}
 
 \begin{center}
@@ -768,49 +887,6 @@ box/.style={rectangle,thick,draw=black,minimum width=20mm, minimum height=10mm,a
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Synthesizer-Diagramm III}
-
-\begin{itemize}
-	\item Relative Koordinaten mit der \texttt{positioning} Library
-\end{itemize}
-
-\begin{center}
-\scalebox{0.8}{%
-\begin{tikzpicture}[box/.style={rectangle,thick,draw=black,minimum width=20mm, minimum height=10mm,align=center}]
-\node at (0,0) [box] (a) {a};
-\node [below = of a,box] (b)  {below};
-\node [above = of a,box] (c)  {above};
-\node [left = of a,box] (d)  {left};
-\node [right = of a,box] (e)  {right};
-\node [below left = of a,box] (f)  {below left};
-\node [below right= of a,box] (g)  {below right};
-\node [above left = of a,box] (h)  {above left};
-\node [above right= of a,box] (i)  {above right};
-\node [below right = 3cm and 5cm of a] {3d5r};
-\end{tikzpicture}}
-\end{center}
-
-\end{frame}
-
-
-\begin{frame}[containsverbatim]
-\frametitle{Synthesizer-Diagramm IV}
-
-\begin{lstlisting}
-\node at (0,0) [box] (a) {a};
-\node [below = of a,box] (b)  {below};
-\node [above = of a,box] (c)  {above};
-\node [left = of a,box] (d)  {left};
-\node [right = of a,box] (e)  {right};
-\node [below left = of a,box] (f)  {below left};
-\node [below right= of a,box] (g)  {below right};
-\node [above left = of a,box] (h)  {above left};
-\node [above right= of a,box] (i)  {above right};
-\node [below right = 3cm and 5cm of a] {3d5r};
-\end{lstlisting}
-
-\end{frame}
 
 \begin{frame}
 \frametitle{Synthesizer-Diagramm V}
@@ -1161,19 +1237,24 @@ align=center,node distance=0.5cm},scale=0.85, transform shape]
 
 \end{frame}
 
+
 \begin{frame}
-\frametitle{Persönliches Fazit}
+\frametitle{Fazit}
 
 \begin{itemize}
-\item TikZ = Wow\ldots
-\item Steile Lernkurve, Diagramme werden mehr \enquote{programmiert} 
-\item Syntax ist speziell, wenn man von PS*Tricks etc. kommt
-\item Ergebnisse überzeugen aber
+	\item Wow\ldots
+\item Riesige Bandbreite der Möglichkeiten 
+\item Steile Lernkurve
+\item Tolle Ergebnisse
 \end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+\cat[contour=black]
+\end{tikzpicture}
+\end{center}
+
 \end{frame}
-
-
-
 
 
 
