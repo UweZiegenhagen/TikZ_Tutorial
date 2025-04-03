@@ -80,7 +80,7 @@
 \frametitle{Inhalt}
 
 \begin{itemize}
-\item Kurze (nicht vollständige) Vorstellung \newline von TikZ-Grundlagen
+\item Kurze -- nicht vollständige -- Vorstellung \newline von TikZ-Grundlagen
 \item Beispiele, Beispiele, Beispiele\ldots 
 \item Siehe auch \url{https://github.com/UweZiegenhagen/TikZ_Tutorial}
 \end{itemize}
@@ -106,15 +106,15 @@
 
 \begin{lstlisting}
 \begin{tikzpicture}
-\draw[very thick] (1,1) -- (4,4) -- (6,2);
 \draw[step=1cm,blue,thin] (0,0) grid (10,5);
+\draw[very thick] (1,1) -- (4,4) -- (6,2);
 \end{tikzpicture}
 \end{lstlisting}
 
 \begin{center}
 \begin{tikzpicture}
-\draw[very thick] (1,1) -- (4,4) -- (6,2);
 \draw[step=1cm,blue,thin] (0,0) grid (10,5);
+\draw[very thick] (1,1) -- (4,4) -- (6,2);
 \end{tikzpicture}
 \end{center}
 
@@ -339,7 +339,7 @@ ohne Update der Koordinaten
 
 \node[rectangle,draw = red,very thick,rounded corners=5pt,fill=green] (r) at (2.5,1){Runde Ecken};
 
-\node[rectangle,draw = red,very thick,rounded corners=5pt,minimum width=5cm, minimum height=15mm, fill=yellow] (r) at (7,2){Runde Ecken};
+\node[rectangle,drop shadow,draw = red,very thick,rounded corners=5pt,minimum width=5cm, minimum height=15mm, fill=yellow] (r) at (7,2){Runde Ecken};
 \end{tikzpicture}
 \end{lstlisting}
 
@@ -364,7 +364,7 @@ ohne Update der Koordinaten
 	\item Zielscheibe 10m Luftpistole
 	\item Weihnachtszahlen
 	\item Kalender
-	\item Synthesizer-Diagramm
+	\item Synthesizer-Aufbau
 \end{itemize}
 \end{frame}
 
@@ -753,9 +753,16 @@ ohne Update der Koordinaten
 \end{center}
 \end{frame}
 
-
 \begin{frame}[containsverbatim]
 \frametitle{Kalender I}
+
+\begin{center}
+\fbox{\includegraphics[width=0.95\textwidth]{./Examples/Kalender-2025}}
+\end{center}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Kalender II}
 
 \begin{itemize}
 	\item Excel = Lebensnotwendigkeit für BWLer
@@ -770,7 +777,7 @@ ohne Update der Koordinaten
 \end{frame}
 
 \begin{frame}[containsverbatim]
-\frametitle{Kalender II}
+\frametitle{Kalender III}
 
 \begin{itemize}
 	\item \lstinline|\node at (0,-1) [workday] {\hspace*{-0.9em}{Mi}};|
@@ -783,7 +790,7 @@ ohne Update der Koordinaten
 
 
 \begin{frame}[containsverbatim]
-\frametitle{Kalender III}
+\frametitle{Kalender IV}
 
 \begin{center}
 \fbox{\includegraphics[width=0.95\textwidth]{./Examples/Kalender-2025}}
@@ -1073,7 +1080,7 @@ align=center,node distance=0.5cm}]
 \end{lstlisting}
 
 \begin{itemize}
-	\item \texttt{<coordinate>} steht dabei für eine Koordinate, ein Node ohne Text ist.
+	\item \texttt{<coordinate>} steht dabei für eine Koordinate, ein Node ohne Text
 	\item  \texttt{<number>} ist Zahl zwischen 0 und 1 und gibt die Prozente an, um den wir uns von Koordinate 1 zu Koordinate 2 bewegen. 
 	\item  \texttt{0.25} steht also für ein Viertel des Weges 
 \end{itemize}
