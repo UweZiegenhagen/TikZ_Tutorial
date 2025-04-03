@@ -1,6 +1,6 @@
 %!TEX TS-program = Arara
 % arara: pdflatex: {shell: yes}
-\documentclass[14pt,ngerman]{beamer}
+\documentclass[14pt,ngerman,aspectratio=169]{beamer}
 
 \usepackage[T1]{fontenc}
 \usepackage{booktabs}
@@ -396,7 +396,7 @@ ohne Update der Koordinaten
 \frametitle{Zielscheibe Luftpistole II}
 
 \begin{center}
-\begin{tikzpicture}[scale=0.5]
+\begin{tikzpicture}[scale=0.48]
 \coordinate (o) at (8,8);
 \draw[black] (o) circle (77.5mm);
 \draw[black] (o) circle (69.75mm);
@@ -494,7 +494,7 @@ ohne Update der Koordinaten
 \frametitle{Zielscheibe Luftpistole IV}
 
 \begin{center}
-\resizebox{8cm}{8cm}{%
+\resizebox{7cm}{7cm}{%
 \begin{tikzpicture}
 \coordinate (o) at (8,8);
 \draw[black] (o) circle (77.5mm);
@@ -584,7 +584,7 @@ ohne Update der Koordinaten
 \frametitle{Zielscheibe Luftpistole VI}
 
 \begin{center}
-\resizebox{8cm}{8cm}{%
+\resizebox{7.5cm}{7.5cm}{%
 \begin{tikzpicture}
 \coordinate (o) at (8,8);
 \draw[black,thick,fill=lightgray] (o) circle (29.75mm);
@@ -757,7 +757,7 @@ ohne Update der Koordinaten
 \frametitle{Kalender I}
 
 \begin{center}
-\fbox{\includegraphics[width=0.95\textwidth]{./Examples/Kalender-2025}}
+\fbox{\includegraphics[width=0.7\textwidth]{./Examples/Kalender-2025}}
 \end{center}
 \end{frame}
 
@@ -784,7 +784,7 @@ ohne Update der Koordinaten
 \end{itemize}\vspace*{-0.5cm}
 
 \begin{center}
-\fbox{\includegraphics[width=1\textwidth]{./Examples/Kalendermacher_blog_Excel}}
+\fbox{\includegraphics[width=.85\textwidth]{./Examples/Kalendermacher_blog_Excel}}
 \end{center}
 \end{frame}
 
@@ -793,7 +793,7 @@ ohne Update der Koordinaten
 \frametitle{Kalender IV}
 
 \begin{center}
-\fbox{\includegraphics[width=0.95\textwidth]{./Examples/Kalender-2025}}
+\fbox{\includegraphics[width=0.7\textwidth]{./Examples/Kalender-2025}}
 \end{center}
 \end{frame}
 
@@ -804,12 +804,12 @@ ohne Update der Koordinaten
 	\item Bisher mein komplexestes TikZ-Diagramm
 	\item Beschreibt den Signalweg in Synthesizer
 	\item Steile Lernkurve!
-\end{itemize}\vspace*{-0.5cm}
+\end{itemize}\vspace*{-0.25cm}
 
 \begin{center}
 \begin{tikzpicture}[box/.style={rectangle,thick,draw=black,
 minimum width=20mm, minimum height=10mm,
-align=center,node distance=0.5cm},scale=0.85, transform shape]
+align=center,node distance=0.5cm},scale=0.82, transform shape]
 
 \node at (0,0) [box] (noise) {Noise};
 \node [box, below = of noise] (vco2) {VCO2};
